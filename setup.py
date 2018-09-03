@@ -1,16 +1,19 @@
 from setuptools import setup, find_packages
 
 # get around issues importing sqlalchemy
-execfile('sabridge/version.py')
+main_ns = {}
+ver_path = convert_path('sabridge/version.py')
+with open(ver_path) as ver_file:
+    exec(ver_file.read(), main_ns)
 
 tests_require = [
     'Django>=1.2,<1.4',
 ]
 setup(
     name='django-sabridge',
-    version=__version__,
-    author='John Paulett',
-    author_email='john@paulett.org',
+    version=main_ns['__version__'],
+    author='John Paulett, Laszlo Hegedus',
+    author_email='john@paulett.org, laszlo.hegedus@cherubits.hu',
     url='https://django-sabridge.readthedocs.org',
     description = 'Provides SQLAlchemy access to Django models.',
     license='BSD',
