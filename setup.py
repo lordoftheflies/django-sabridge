@@ -1,3 +1,4 @@
+from distutils.util import convert_path
 from setuptools import setup, find_packages
 
 # get around issues importing sqlalchemy
